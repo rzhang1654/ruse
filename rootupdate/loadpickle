@@ -1,0 +1,13 @@
+import os.path as path
+import pickle
+def buildinv(sessionid,basedir='/home/flask1/source/log/',masterfile='.allhosts.txt'):
+  log = path.join(basedir,str(sessionid))
+  inv = path.join(log,masterfile)
+  arr1 = []
+  for line in open(inv).readlines():
+    arr1.append(line.strip())
+  print(arr1)
+  with open(path.splitext(inv)[0],'wb') as fp:
+    pickle.dump(arr1,fp)
+
+buildinv(123456)
